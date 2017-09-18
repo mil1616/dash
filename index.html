@@ -1,0 +1,38 @@
+<!-- index.html -->
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body id="root">
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Crypto Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- main body of our application -->
+  <div class="container" v-model="message">
+    <div class="coinmarketcap-currency-widget col-sm-6" data-currency="bitcoin" data-base="AUD" data-secondary="USD" data-ticker="true" data-rank="false" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+    <div class="coinmarketcap-currency-widget col-sm-6" data-currency="ethereum" data-base="AUD" data-secondary="USD" data-ticker="true" data-rank="false" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+
+    <div>
+      <span>{{message}}</span>
+      <strong>{{getPrice()}}</strong>
+    </div>
+  </div>
+
+  <!-- JS -->
+<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
