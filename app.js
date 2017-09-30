@@ -4,16 +4,49 @@ new Vue({
   el: '#root',
 
   data: {
-    message : 'youhou'
+    message: 'Youhou',
+    task: {
+      title: ''
+    },
+    tasks: []
   },
 
-  ready: function () {
-
+  ready: function() {
+    this.fetchTasks();
   },
 
   methods: {
-    getPrice(){
-      return '30';
+    getTestMessage() {
+      return 'TestMessage';
+    },
+
+    fetchTasks: function() {
+      var tasks = [{
+          id: 1,
+          title: 'put water in the iron'
+        },
+        {
+          id: 2,
+          title: 'buy reusable coffee cup'
+        }
+      ];
+      this.$set('tasks', tasks);
+    },
+
+    addEvent: function() {
+      if (this.task.title) {
+        this.tasks.push(this.task);
+        this.task = {
+          title: ''
+        };
+      }
+    },
+
+    deleteEvent: function(index) {
+      // if(confirm("Are you sure you want to delete this event?")) {
+      // $remove is a Vue convenience method similar to splice
+      this.tasks.splice(index, 1);
+      // }
     }
   }
 });
