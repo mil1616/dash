@@ -57,6 +57,15 @@ if(!err) {
 }
 });
 
+mysql.query('USE nodedb');
+
+app.get('/tasks', function(req, res){
+  mysql.query('SELECT * FROM task', function(err, rows){
+    console.log(rows);
+    // res.render('tasks', {task : rows});
+  });
+});
+
 
 app.listen(8090);
 console.log('Magic happens on port 8090...');
