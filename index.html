@@ -21,7 +21,7 @@
   </nav>
 
   <!-- main body of our application -->
-  <div class="container" v-model="message">
+  <div class="container" >
     <div class="row">
       <h1>Crypto</h1>
 
@@ -38,7 +38,7 @@
     </div>
     <div class="row">
       <h1>Tasks</h1>
-      <!-- add an event form -->
+      <!-- add an task form -->
       <div class="col-sm-6">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -66,7 +66,7 @@
 
             <!-- <p class="list-group-item-text" v-if="event.description">{{ event.description }}</p> -->
 
-            <button class="btn btn-xs btn-danger" v-on:click="deleteEvent($index)">Delete</button>
+            <button class="btn btn-xs btn-danger" v-on:click="deleteEvent($index, task.id)">Delete</button>
           </a>
         </div>
       </div>
