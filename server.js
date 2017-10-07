@@ -43,26 +43,47 @@ var DATABASE = 'nodedb';
 var TABLE = 'task';
 
 var mysql = _mysql.createConnection({
-    host: HOST,
-    port: PORT,
-    user: MYSQL_USER,
-    password: MYSQL_PASS,
+  host: HOST,
+  port: PORT,
+  user: MYSQL_USER,
+  password: MYSQL_PASS,
 });
 
-mysql.connect(function(err){
-if(!err) {
+mysql.connect(function(err) {
+  if (!err) {
     console.log("Database is connected ... \n\n");
-} else {
+  } else {
     console.log("Error connecting database ... \n\n");
-}
+  }
 });
 
 mysql.query('USE nodedb');
 
-app.get('/tasks', function(req, res){
-  mysql.query('SELECT * FROM task', function(err, rows){
-    console.log(rows);
-    // res.render('tasks', {task : rows});
+app.get('/tasks', function(req, res) {
+  mysql.query('SELECT * FROM task', function(err, rows) {
+    res.send(rows);
+  });
+});
+
+app.post('/tasks', function(req, res) {
+  var params = req.body
+  mysql.query('INSERT INTO task SET ?', params, function(error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.put('/task', function(req, res) {
+  connection.query('UPDATE `customer` SET `Name`=?,`Address`=?,`Country`=?,`Phone`=? where `Id`=?', [req.body.Name, req.body.Address, req.body.Country, req.body.Phone, req.body.Id], function(error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.delete('/task', function(req, res) {
+  mysql.query('DELETE FROM task WHERE `Id`=?', [req.body.id], function(error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
   });
 });
 
