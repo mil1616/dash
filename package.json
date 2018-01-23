@@ -1,10 +1,10 @@
 {
-  "name": "vue-event-bulletin",
+  "name": "Dashboard",
   "version": "1.0.0",
-  "description": "Demo application for the scotch.io tutorial",
+  "description": "Dashboard for everything",
   "main": "server.js",
-  "author": "Ryan Chenkie, Jason Lam",
-  "license": "MIT",
+  "author": "Gael Sonney",
+  "license": "",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "ejs": "^2.3.4",
